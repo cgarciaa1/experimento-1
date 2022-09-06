@@ -4,7 +4,7 @@ import requests
 class SignalMonitorResource(Resource):
 
     def get(self):
-        response = requests.get("http://xxxxxx/api-queries/monitor")
+        response = requests.get("http://192.168.1.145/api-queries/monitor")
         return response, 200
 
      
