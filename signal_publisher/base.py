@@ -8,4 +8,4 @@ app = Flask(__name__)
 ma = Marshmallow(app)
 api = Api(app)
 
-r = redis.Redis(host='redis', port=6379, db=0)
+r = Redis(host='redis', port=6379, db=0)
