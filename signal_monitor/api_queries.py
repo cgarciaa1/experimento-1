@@ -1,4 +1,4 @@
-from base import app, api, ma, r, Resource, Flask, request
+from base import app, api, ma, Resource, Flask, request
 import requests
 
 class SignalMonitorResource(Resource):
