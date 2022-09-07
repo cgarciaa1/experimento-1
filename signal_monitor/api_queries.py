@@ -4,7 +4,9 @@ import requests
 class SignalMonitorResource(Resource):
 
     def get(self):
+        print("Preparando request Monitor")
         response = requests.get("http://signals-queries:5000/api-queries/monitor")
+        print("Respuesta: {}".format(response))
         return response, 200
 
      
