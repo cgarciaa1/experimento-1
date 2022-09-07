@@ -33,7 +33,7 @@ def thread_function(p):
 
 if __name__ == '__main__':
   
-    x = threading.Thread(target=thread_function, args=(0))
+    x = threading.Thread(target=thread_function, args=(0,))
     x.start()
 
     app.run(debug=True, host='0.0.0.0')
