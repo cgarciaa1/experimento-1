@@ -10,7 +10,7 @@ class SignalPublisherResource(Resource):
         r.publish('signal-channel', name)
         return "Mensaje publicado", 200
 
-api.add_resource(SignalPublisherResource, '/api-commands/signal')
+api.add_resource(SignalPublisherResource, '/api-commands/signals')
 
 
 

@@ -11,7 +11,7 @@ class SignalProcessorResource(Resource):
 
      
 
-api.add_resource(SignalProcessorResource, '/api-queries/signal')
+api.add_resource(SignalProcessorResource, '/api-queries/signals')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
