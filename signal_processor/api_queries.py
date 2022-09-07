@@ -7,7 +7,7 @@ class SignalProcessorResource(Resource):
 
     def get(self):
 
-        return r'{"status":"Ok"}', 200
+        return {"status":"Ok"}, 200
 
      
 
