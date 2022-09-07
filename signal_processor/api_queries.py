@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     p = r.pubsub()
     p.subscribe("signal-channel")       
-
+    logging.warning("-------EJECUTANDO ANTES DE LOG")
     while True:
         logging.warning("Subscrition")
         message = p.get_message()
