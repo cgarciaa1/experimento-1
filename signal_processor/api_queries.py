@@ -4,6 +4,10 @@ import logging
 import threading
 
 event = ""
+logging.warning("-------EJECUTANDO ANTES DE LOG")
+subcription = r.pubsub()    
+logging.warning("-------EJECUTANDO DESPUES DE LOG ----------")
+subcription.subscribe("signal-channel") 
 
 class SignalProcessorResource(Resource):
 
@@ -17,7 +21,7 @@ def thread_function(p):
     
     while True:
         logging.warning("Subscrition")
-        message = p.get_message()
+        message = subcription.get_message()
         logging.warning("-------")
         logging.warning(message)
         logging.warning("-------")
@@ -28,11 +32,8 @@ def thread_function(p):
 
 
 if __name__ == '__main__':
-    logging.warning("-------EJECUTANDO ANTES DE LOG")
-    subcription = r.pubsub()    
-    logging.warning("-------EJECUTANDO DESPUES DE LOG ----------")
-    subcription.subscribe("signal-channel")   
-    x = threading.Thread(target=thread_function, args=(subcription))
+  
+    x = threading.Thread(target=thread_function, args=(0))
     x.start()
 
     app.run(debug=True, host='0.0.0.0')
