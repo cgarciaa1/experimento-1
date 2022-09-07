@@ -29,10 +29,10 @@ def thread_function(channel, p):
 
 if __name__ == '__main__':
     logging.warning("-------EJECUTANDO ANTES DE LOG"
-    p = r.pubsub()    
+    subcription = r.pubsub()    
     logging.warning("-------EJECUTANDO DESPUES DE LOG ----------"
-    p.subscribe(channel)   
-    x = threading.Thread(target=thread_function, args=("signal-channel", p))
+    subcription.subscribe(channel)   
+    x = threading.Thread(target=thread_function, args=("signal-channel", subcription))
     x.start()
 
     app.run(debug=True, host='0.0.0.0')
