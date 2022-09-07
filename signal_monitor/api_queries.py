@@ -22,7 +22,7 @@ def thread_function(p):
     while True:
         response = requests.get("http://signals-queries:5000/api-queries/signals")
         number_requests += 1
-        health = response.json["status"]
+        health = response.json()["status"]
         logging.warning("Respuesta obtenida: {}".format(health))
         if health == "ERROR" & real_time_error == False:
             number_errors += 1
