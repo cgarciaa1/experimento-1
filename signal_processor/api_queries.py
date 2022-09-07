@@ -1,13 +1,14 @@
 from base import app, api, ma, r, Resource, Flask, request
 import time
+import logging
 
-
+mensaje = ""
 
 class SignalProcessorResource(Resource):
 
     def get(self):
 
-        return {"status":"Ok"}, 200
+        return {"status":"Ok", "event": event }, 200
 
      
 
@@ -22,5 +23,6 @@ p.subscribe("signal-channel")
 while True:
     message = p.get_message()
     if message:
-        print(message)
+        logging.info("Evento obtenido: {}".format(message))
+        event = message
     time.sleep(0.01)

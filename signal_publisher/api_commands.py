@@ -8,7 +8,7 @@ class SignalPublisherResource(Resource):
         
         name=request.json['evento']
         r.publish('signal-channel', name)
-        return "Mensaje publicado", 200
+        return {"status":"Ok", "response": "Mensaje publicado"}, 200
 
 api.add_resource(SignalPublisherResource, '/api-commands/signals')
 
