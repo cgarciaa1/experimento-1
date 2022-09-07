@@ -25,20 +25,20 @@ def thread_function(p):
     global errores
     global requests
     global status
+    first_item = True
     while True:
         message = subcription.get_message()
-        logging.warning("-------")
-        logging.warning(message)
-        logging.warning("-------")
         if message:
-            logging.warning("Evento obtenido: {}".format(message))
-            requests += 1
-            if requests % 5 == 0 :
-                errores += 1
-                status = "ERROR"
-                
-            else: 
-                status = "OK"        
+            if first_item:
+                first_item = False
+            else:
+                requests += 1
+                if requests % 5 == 0 :
+                    errores += 1
+                    status = "ERROR"
+                    
+                else: 
+                    status = "OK"        
         time.sleep(10)
 
 
