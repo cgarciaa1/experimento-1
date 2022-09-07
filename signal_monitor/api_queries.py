@@ -24,7 +24,7 @@ def thread_function(p):
         number_requests += 1
         health = response.json()["status"]
         logging.warning("Respuesta obtenida: {}".format(health))
-        if health == "ERROR" & real_time_error == False:
+        if health == "ERROR" and not real_time_error:
             number_errors += 1
             real_time_error = True
         elif health == "OK":
