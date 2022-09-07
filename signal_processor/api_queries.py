@@ -7,7 +7,7 @@ event = ""
 class SignalProcessorResource(Resource):
 
     def get(self):
-
+        logging.warning("-------EJECUTANDO OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
         return {"status":"Ok", "event": event }, 200
 
      
