@@ -28,7 +28,7 @@ def thread_function(p):
         if message:
             logging.warning("Evento obtenido: {}".format(message))
             event = message
-        time.sleep(0.01)
+        time.sleep(10)
 
 
 if __name__ == '__main__':
