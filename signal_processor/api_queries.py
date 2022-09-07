@@ -2,7 +2,7 @@ from base import app, api, ma, r, Resource, Flask, request
 import time
 import logging
 
-mensaje = ""
+event = ""
 
 class SignalProcessorResource(Resource):
 
