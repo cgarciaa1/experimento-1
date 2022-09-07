@@ -3,9 +3,9 @@ import time
 import logging
 import threading
 
-event = ""
 requests= 0
-status= "Ok"
+errores = 0
+status= "OK"
 
 subcription = r.pubsub()    
 subcription.subscribe("signal-channel") 
@@ -13,13 +13,16 @@ subcription.subscribe("signal-channel")
 class SignalProcessorResource(Resource):
 
     def get(self):
-        return {"status": status, "event": event }, 200
+        global requests
+        global errores
+        global status
+        return {"status": status, "number_errors": errores, "number_requests": requests }, 200
 
 api.add_resource(SignalProcessorResource, '/api-queries/signals')
 
 
 def thread_function(p):
-    global event
+    global errores
     global requests
     global status
     while True:
@@ -31,10 +34,11 @@ def thread_function(p):
             logging.warning("Evento obtenido: {}".format(message))
             requests += 1
             if requests % 5 == 0 :
-                status = "Ok"
+                errores += 1
+                status = "ERROR"
+                
             else: 
-                status = "Error"
-                event = ""
+                status = "OK"        
         time.sleep(10)
 
 
