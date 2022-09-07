@@ -13,7 +13,7 @@ class SignalProcessorResource(Resource):
 api.add_resource(SignalProcessorResource, '/api-queries/signals')
 
 
-def thread_function(channel, p):
+def thread_function(p):
     
     while True:
         logging.warning("Subscrition")
@@ -31,8 +31,8 @@ if __name__ == '__main__':
     logging.warning("-------EJECUTANDO ANTES DE LOG")
     subcription = r.pubsub()    
     logging.warning("-------EJECUTANDO DESPUES DE LOG ----------")
-    subcription.subscribe(channel)   
-    x = threading.Thread(target=thread_function, args=("signal-channel", subcription))
+    subcription.subscribe("signal-channel")   
+    x = threading.Thread(target=thread_function, args=(subcription))
     x.start()
 
     app.run(debug=True, host='0.0.0.0')
