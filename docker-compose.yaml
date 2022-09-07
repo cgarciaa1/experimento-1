@@ -104,6 +104,6 @@ services:
         - users-queries
         - products-commands
         - products-queries
-        - signal-queries
+        - signals-queries
         - monitor-queries
-        - signal-commands
+        - signals-commands
