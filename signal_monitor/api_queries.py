@@ -7,7 +7,7 @@ class SignalMonitorResource(Resource):
         
         response = requests.get("http://signals-queries:5000/api-queries/signals")
         
-        return "Ok - ", 200
+        return response.json(), 200
 
      
 
