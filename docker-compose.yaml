@@ -68,7 +68,7 @@ services:
     command: rq worker -u 'redis://redis/1'
     depends_on:
       - redis
-  signal-commands:
+  signals-commands:
     volumes:
         - ./signal_publisher/:/mnt/
     build: ./signal_publisher
@@ -76,7 +76,7 @@ services:
     command: sh run_commands.sh
     depends_on:
       - redis
-  signal-queries:
+  signals-queries:
     volumes:
         - ./signal_processor/:/mnt/
     build: ./signal_processor
