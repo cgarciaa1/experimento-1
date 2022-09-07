@@ -21,9 +21,12 @@ p = r.pubsub()
 p.subscribe("signal-channel")       
 
 while True:
-    logging.info("Subscrition")
+    logging.warning("Subscrition")
     message = p.get_message()
+    logging.warning("-------")
+    logging.warning(message)
+    logging.warning("-------")
     if message:
-        logging.info("Evento obtenido: {}".format(message))
+        logging.warning("Evento obtenido: {}".format(message))
         event = message
     time.sleep(0.01)
