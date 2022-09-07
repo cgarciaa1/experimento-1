@@ -28,6 +28,8 @@ services:
     build: ./signal_monitor
     working_dir: /backend/
     command: sh run_queries.sh
+    depends_on:
+      - signals-queries 
 
   nginx:
     image: nginx:latest
