@@ -4,30 +4,37 @@ import logging
 import threading
 
 event = ""
-logging.warning("-------EJECUTANDO ANTES DE LOG")
+requests= 0
+status= "Ok"
+
 subcription = r.pubsub()    
-logging.warning("-------EJECUTANDO DESPUES DE LOG ----------")
 subcription.subscribe("signal-channel") 
 
 class SignalProcessorResource(Resource):
 
     def get(self):
-        return {"status":"Ok", "event": event }, 200
+        return {"status": status, "event": event }, 200
 
 api.add_resource(SignalProcessorResource, '/api-queries/signals')
 
 
 def thread_function(p):
-    
+    global event
+    global requests
+    global status
     while True:
-        logging.warning("Subscrition")
         message = subcription.get_message()
         logging.warning("-------")
         logging.warning(message)
         logging.warning("-------")
         if message:
             logging.warning("Evento obtenido: {}".format(message))
-            event = message
+            requests += 1
+            if requests % 5 == 0 :
+                status = "Ok"
+            else: 
+                status = "Error"
+                event = ""
         time.sleep(10)
 
 
