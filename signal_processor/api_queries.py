@@ -39,7 +39,7 @@ def thread_function(p):
                     
                 else: 
                     status = "OK"        
-        time.sleep(10)
+        time.sleep(3)
 
 
 if __name__ == '__main__':
